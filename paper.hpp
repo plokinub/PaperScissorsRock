@@ -7,6 +7,7 @@
 class Paper : public Hand
 {
 public:
-    Paper(std::string name);
-    void Accept(Visitor &visitor) override;
+    Paper() = default;
+    static std::string GetNameStatic() { return "Paper"; };
+    std::string GetName() override { return Paper::GetNameStatic(); };
 };

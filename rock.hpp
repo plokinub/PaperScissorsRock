@@ -7,6 +7,7 @@
 class Rock : public Hand
 {
 public:
-    Rock(std::string name);
-    void Accept(Visitor &visitor) override;
+    Rock() = default;
+    static std::string GetNameStatic() { return "Rock"; };
+    std::string GetName() override { return Rock::GetNameStatic(); };
 };

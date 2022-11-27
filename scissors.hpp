@@ -7,6 +7,7 @@
 class Scissors : public Hand
 {
 public:
-    Scissors(std::string name);
-    void Accept(Visitor &visitor) override;
-}
+    Scissors() = default;
+    static std::string GetNameStatic() { return "Scissors"; };
+    std::string GetName() override { return Scissors::GetNameStatic(); };
+};

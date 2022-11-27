@@ -1,11 +1,29 @@
 #include "hand.hpp"
+#include <stdexcept>
 
-std::string Hand::GetName()
+void Hand::AddDispatcher(std::unique_ptr<IDispatcher> dispatcher)
 {
-    return mName;
+    mDispatchers.push_back(std::move(dispatcher));
 }
 
-Hand::Hand(std::string name)
+std::vector<std::unique_ptr<IDispatcher>> &Hand::GetDispatchers()
 {
-    mName = name;
+    return mDispatchers;
+}
+
+int Hand::Dispatch(Hand &hand)
+{
+    for (auto &dispatcher : mDispatchers)
+    {
+        if (dispatcher->GetName() == hand.GetName())
+        {
+            return dispatcher->GetAction();
+        }
+    }
+    throw std::runtime_error("Dont know how to play this hand...");
+}
+
+int Hand::PlayAgainst(Hand &hand)
+{
+    return Dispatch(hand);
 }

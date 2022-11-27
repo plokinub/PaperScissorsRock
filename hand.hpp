@@ -1,15 +1,22 @@
 #pragma once
 
 #include <string>
-#include "visitor.hpp"
+#include <vector>
+#include <memory>
+#include "IDispatcher.hpp"
 
 class Hand
 {
 public:
-    Hand(std::string name);
-    virtual void Accept(Visitor &visitor) = 0;
-    std::string GetName();
+    Hand() = default;
+
+    void AddDispatcher(std::unique_ptr<IDispatcher> dispatcher);
+
+    std::vector<std::unique_ptr<IDispatcher>> &GetDispatchers();
+    int Dispatch(Hand &hand);
+    int PlayAgainst(Hand &hand);
+    virtual std::string GetName() = 0;
 
 private:
-    std::string mName;
+    std::vector<std::unique_ptr<IDispatcher>> mDispatchers;
 };
