@@ -1,12 +1,15 @@
 #include <iostream>
 #include "handFactory.hpp"
+#include "paper.hpp"
+#include "scissors.hpp"
+#include "rock.hpp"
 
 int main(int, char **)
 {
     auto handFactory = HandFactory();
-    auto rock = handFactory.CreateRock();
-    auto paper = handFactory.CreatePaper();
-    auto scissors = handFactory.CreateScissors();
+    auto rock = handFactory.CreateHand<Rock>();
+    auto paper = handFactory.CreateHand<Paper>();
+    auto scissors = handFactory.CreateHand<Scissors>();
 
     std::cout << "Rock vs Paper: " << rock->PlayAgainst(*paper) << std::endl;
     std::cout << "Rock vs Scissors: " << rock->PlayAgainst(*scissors) << std::endl;

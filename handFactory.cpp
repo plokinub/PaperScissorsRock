@@ -8,16 +8,18 @@ using std::make_unique;
 using std::move;
 using std::unique_ptr;
 
-std::unique_ptr<Hand> HandFactory::CreatePaper()
+template <>
+std::unique_ptr<Hand> HandFactory::CreateHand<Rock>()
 {
-    auto hand = make_unique<Paper>();
-    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(0)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(1)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(-1)));
+    auto hand = std::make_unique<Rock>();
+    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(0)));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(-1)));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(1)));
     return hand;
 }
 
-std::unique_ptr<Hand> HandFactory::CreateScissors()
+template <>
+std::unique_ptr<Hand> HandFactory::CreateHand<Scissors>()
 {
     auto hand = std::make_unique<Scissors>();
     hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(0)));
@@ -26,11 +28,12 @@ std::unique_ptr<Hand> HandFactory::CreateScissors()
     return hand;
 }
 
-std::unique_ptr<Hand> HandFactory::CreateRock()
+template <>
+std::unique_ptr<Hand> HandFactory::CreateHand<Paper>()
 {
-    auto hand = std::make_unique<Rock>();
-    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(0)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(-1)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(1)));
+    auto hand = make_unique<Paper>();
+    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(0)));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(1)));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(-1)));
     return hand;
 }

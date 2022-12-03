@@ -10,7 +10,10 @@ class HandFactory : public IHandFactory
 
 public:
     HandFactory() = default;
-    std::unique_ptr<Hand> CreateRock();
-    std::unique_ptr<Hand> CreatePaper();
-    std::unique_ptr<Hand> CreateScissors();
+
+    template <class HandType>
+    std::unique_ptr<Hand> CreateHand()
+    {
+        throw std::runtime_error("Unimplemented CreateHand() for this type");
+    }
 };
