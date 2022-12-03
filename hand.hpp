@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include "interface/IDispatcher.hpp"
+#include "action.hpp"
 
 class Hand
 {
@@ -13,8 +14,8 @@ public:
     void AddDispatcher(std::unique_ptr<IDispatcher> dispatcher);
 
     std::vector<std::unique_ptr<IDispatcher>> &GetDispatchers();
-    int Dispatch(Hand &hand);
-    int PlayAgainst(Hand &hand);
+    Result Dispatch(Hand &hand);
+    Result PlayAgainst(Hand &hand);
     virtual const std::string GetName() = 0;
 
 private:

@@ -9,7 +9,7 @@ template <class Hand>
 class Dispatcher : public IDispatcher
 {
 public:
-    Dispatcher(int action) : IDispatcher(action), mName(Hand::GetNameStatic()){};
+    Dispatcher(int action, std::optional<std::string> actionName = std::nullopt) : IDispatcher(action, actionName), mName(Hand::GetNameStatic()) {}
 
     constexpr std::string_view GetName() override
     {

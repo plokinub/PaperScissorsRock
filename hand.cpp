@@ -11,7 +11,7 @@ std::vector<std::unique_ptr<IDispatcher>> &Hand::GetDispatchers()
     return mDispatchers;
 }
 
-int Hand::Dispatch(Hand &hand)
+Result Hand::Dispatch(Hand &hand)
 {
     for (auto &dispatcher : mDispatchers)
     {
@@ -23,7 +23,7 @@ int Hand::Dispatch(Hand &hand)
     throw std::runtime_error("Dont know how to play this hand...");
 }
 
-int Hand::PlayAgainst(Hand &hand)
+Result Hand::PlayAgainst(Hand &hand)
 {
     return Dispatch(hand);
 }

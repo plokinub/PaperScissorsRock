@@ -12,7 +12,7 @@
 
 int main(int, char **)
 {
-    auto game = NPlayerBotGame<NPlayerRound, ExtendedHandFactory>{};
+    auto game = NPlayerBotGame<NPlayerRound, HandFactory>{};
     game.Setup();
     game.Play();
     game.PrintScores();

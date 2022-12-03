@@ -16,11 +16,12 @@ void Round::Play()
     auto result = player1Hand->PlayAgainst(*player2Hand);
     printResult(result, player1->GetName(), player2->GetName());
 
-    if (result == 1)
+    auto action = result.GetAction();
+    if (action == 1)
     {
         player1->AddWin();
     }
-    else if (result == -1)
+    else if (action == -1)
     {
         player2->AddWin();
     }
@@ -48,11 +49,13 @@ void NPlayerRound::Play()
             auto &player2Hand = hands.at(std::distance(mPlayers.begin(), player2It));
             auto result = player1Hand->PlayAgainst(*player2Hand);
 
-            if (result == 1)
+            auto action = result.GetAction();
+
+            if (action == 1)
             {
                 player1->AddWin();
             }
-            else if (result == -1)
+            else if (action == -1)
             {
                 player2->AddWin();
             }

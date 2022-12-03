@@ -13,9 +13,9 @@ template <>
 std::unique_ptr<Hand> HandFactory::CreateHand<Rock>()
 {
     auto hand = std::make_unique<Rock>();
-    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(0)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(-1)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(1)));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(0, "draws with")));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(-1, "is covered by")));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(1, "crushes")));
     return hand;
 }
 
@@ -23,9 +23,9 @@ template <>
 std::unique_ptr<Hand> HandFactory::CreateHand<Scissors>()
 {
     auto hand = std::make_unique<Scissors>();
-    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(0)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(1)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(-1)));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(0, "draws with")));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(1, "cuts")));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(-1, "is crushed by")));
     return hand;
 }
 
@@ -33,9 +33,9 @@ template <>
 std::unique_ptr<Hand> HandFactory::CreateHand<Paper>()
 {
     auto hand = make_unique<Paper>();
-    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(0)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(1)));
-    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(-1)));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Paper>>(0, "draws with")));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Rock>>(1, "covers")));
+    hand->AddDispatcher(move(make_unique<Dispatcher<Scissors>>(-1, "is cut by")));
     return hand;
 }
 

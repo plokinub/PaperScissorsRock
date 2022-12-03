@@ -8,9 +8,15 @@ std::string getNameForPlayer(int playerNumber)
     return name;
 }
 
-void printResult(int result, const std::string_view player1, const std::string_view player2)
+void printResult(Result result, const std::string_view player1, const std::string_view player2)
 {
-    switch (result)
+    if (result.GetActionName())
+    {
+        std::cout << player1 << " " << result.GetActionName().value() << " " << player2 << std::endl;
+        return;
+    }
+
+    switch (result.GetAction())
     {
     case 0:
         std::cout << player1 << " draws against " << player2 << "!" << std::endl;
