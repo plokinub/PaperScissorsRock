@@ -8,10 +8,11 @@
 #include "helpers.hpp"
 #include "game.hpp"
 #include "round.hpp"
+#include "handFactoryExtended.hpp"
 
 int main(int, char **)
 {
-    auto game = NPlayerBotGame<NPlayerRound, HandFactory>{};
+    auto game = NPlayerBotGame<NPlayerRound, ExtendedHandFactory>{};
     game.Setup();
     game.Play();
     game.PrintScores();

@@ -7,14 +7,14 @@
 
 #include "hand.hpp"
 
-class HandFactory : public IHandFactory
+class ExtendedHandFactory : public IHandFactory
 {
 
 private:
-    const int HANDS_COUNT = 3;
+    const int HANDS_COUNT = 5;
 
 public:
-    HandFactory() = default;
+    ExtendedHandFactory() = default;
 
     std::unique_ptr<Hand> CreateRandomHand() override;
     std::unique_ptr<Hand> CreateHandFromString(std::string handName) override;
@@ -27,5 +27,5 @@ public:
 
 protected:
     std::mt19937 mRandomGenerator{std::random_device{}()};
-    std::uniform_int_distribution<> mRandomDistribution{1, HANDS_COUNT};
+    std::uniform_int_distribution<int> mRandomDistribution{1, HANDS_COUNT};
 };
