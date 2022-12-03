@@ -2,9 +2,11 @@
 
 #include "interface/IPlayer.hpp"
 
+#include <string>
+
 class HumanPlayer : public IPlayer
 {
 public:
-    HumanPlayer(IHandFactory &handFactory) : IPlayer(handFactory) {}
+    HumanPlayer(std::string name, IHandFactory &handFactory) : IPlayer(name, handFactory) {}
     std::unique_ptr<Hand> PlayHand() override;
 };

@@ -7,6 +7,6 @@
 class BotPlayer : public IPlayer
 {
 public:
-    BotPlayer(IHandFactory &handFactory) : IPlayer(handFactory) {}
+    BotPlayer(IHandFactory &handFactory) : IPlayer("Computer", handFactory) {}
     std::unique_ptr<Hand> PlayHand() override;
 };
