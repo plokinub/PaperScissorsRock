@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IDispatcher.hpp"
+#include "interface/IDispatcher.hpp"
 #include "hand.hpp"
 
 template <class Hand>

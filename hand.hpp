@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "IDispatcher.hpp"
+#include "interface/IDispatcher.hpp"
 
 class Hand
 {

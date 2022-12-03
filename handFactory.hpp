@@ -3,7 +3,9 @@
 #include "hand.hpp"
 #include <memory>
 
-class HandFactory
+#include "interface/IHandFactory.hpp"
+
+class HandFactory : public IHandFactory
 {
 
 public:
