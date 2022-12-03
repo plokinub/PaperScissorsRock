@@ -14,4 +14,14 @@ void Round::Play()
 
     auto result = player1Hand->PlayAgainst(*player2Hand);
     printResult(result, player1->GetName(), player2->GetName());
+
+    if (result == 1)
+    {
+        player1->AddWin();
+    }
+    else if (result == -1)
+    {
+        player2->AddWin();
+    }
+    printBreakLine();
 }

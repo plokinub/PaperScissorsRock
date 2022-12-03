@@ -19,6 +19,7 @@ public:
 
         std::cout << "How many rounds do you want to play? ";
         std::cin >> mNumRounds;
+        printBreakLine();
     };
     void Play() override
     {
@@ -31,7 +32,6 @@ public:
 
 protected:
     HandFactory mHandFactory;
-    std::vector<std::unique_ptr<IPlayer>> mPlayers;
     int mNumRounds = 1;
 };
 
@@ -52,6 +52,7 @@ public:
         std::cout << "Picking random number of rounds... ";
         mNumRounds = dis(gen);
         std::cout << "Playing " << mNumRounds << " rounds" << std::endl;
+        printBreakLine();
     };
     void Play() override
     {
@@ -64,6 +65,5 @@ public:
 
 protected:
     HandFactory mHandFactory;
-    std::vector<std::unique_ptr<IPlayer>> mPlayers;
     int mNumRounds = 1;
 };

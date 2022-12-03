@@ -25,3 +25,8 @@ void printResult(int result, const std::string_view player1, const std::string_v
         throw std::runtime_error("Invalid result");
     }
 }
+
+void printBreakLine()
+{
+    std::cout << "----------------------------------------" << std::endl;
+}
