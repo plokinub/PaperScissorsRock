@@ -11,7 +11,7 @@
 
 int main(int, char **)
 {
-    auto game = Game<Round, HandFactory>{};
+    auto game = BotVsBotGame<Round, HandFactory>{};
     game.Setup();
     game.Play();
 }
