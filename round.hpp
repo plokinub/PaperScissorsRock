@@ -1,6 +1,7 @@
 #pragma once
 
 #include "interface/ITwoPlayerRound.hpp"
+#include "interface/INPlayerRound.hpp"
 
 class Round : public ITwoPlayerRound
 {
@@ -9,9 +10,9 @@ public:
     void Play() override;
 };
 
-class ThreePlayerRound : public IRound
+class NPlayerRound : public INPlayerRound
 {
 public:
-    ThreePlayerRound(std::vector<std::unique_ptr<IPlayer>> &players) : IRound(players){};
+    NPlayerRound(std::vector<std::unique_ptr<IPlayer>> &players) : INPlayerRound(players){};
     void Play() override;
 };

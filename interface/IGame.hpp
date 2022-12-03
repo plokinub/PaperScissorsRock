@@ -3,6 +3,7 @@
 #include "IRound.hpp"
 #include "IHandFactory.hpp"
 #include "IPlayer.hpp"
+#include "boost/format.hpp"
 
 class IGame
 {
@@ -12,9 +13,10 @@ public:
     virtual void Play() = 0;
     virtual void PrintScores()
     {
-        for (const auto &player : mPlayers)
+        std::cout << boost::format("%-10s | %s") % "Player" % "Score" << std::endl;
+        for (auto &player : mPlayers)
         {
-            std::cout << player->GetName() << " won " << player->GetScore() << " rounds." << std::endl;
+            std::cout << boost::format("%-10s | %d") % player->GetName() % player->GetScore() << std::endl;
         }
     };
 
