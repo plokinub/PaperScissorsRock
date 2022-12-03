@@ -1,4 +1,5 @@
 #include "handFactory.hpp"
+
 #include "paper.hpp"
 #include "scissors.hpp"
 #include "rock.hpp"
@@ -43,13 +44,13 @@ std::unique_ptr<Hand> HandFactory::CreateRandomHand()
     auto randNum = mRandomDistribution(mRandomGenerator);
     switch (randNum)
     {
-    case 0:
-        return CreateHand<Rock>();
     case 1:
-        return CreateHand<Paper>();
+        return CreateHand<Rock>();
     case 2:
+        return CreateHand<Paper>();
+    case 3:
         return CreateHand<Scissors>();
     default:
-        return nullptr;
+        throw std::runtime_error("Could not create random hand");
     }
 }
