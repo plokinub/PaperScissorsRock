@@ -15,7 +15,7 @@ public:
     std::vector<std::unique_ptr<IDispatcher>> &GetDispatchers();
     int Dispatch(Hand &hand);
     int PlayAgainst(Hand &hand);
-    virtual std::string GetName() = 0;
+    virtual const std::string GetName() = 0;
 
 private:
     std::vector<std::unique_ptr<IDispatcher>> mDispatchers;

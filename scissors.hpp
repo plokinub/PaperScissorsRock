@@ -8,6 +8,6 @@ class Scissors : public Hand
 {
 public:
     Scissors() = default;
-    static std::string GetNameStatic() { return "Scissors"; };
-    std::string GetName() override { return Scissors::GetNameStatic(); };
+    static const std::string GetNameStatic() { return "Scissors"; };
+    const std::string GetName() override { return "Scissors"; };
 };
