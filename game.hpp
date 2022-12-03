@@ -3,11 +3,12 @@
 #include <vector>
 
 #include "interface/IGame.hpp"
+#include "interface/ITwoPlayerRound.hpp"
 #include "interface/IPlayer.hpp"
 #include "humanPlayer.hpp"
 #include "botPlayer.hpp"
 
-template <class Round, class HandFactory>
+template <IsTwoPlayerRound Round, class HandFactory>
 class PlayerVsBotGame : public IGame
 {
 public:
@@ -35,7 +36,7 @@ protected:
     int mNumRounds = 1;
 };
 
-template <class Round, class HandFactory>
+template <IsTwoPlayerRound Round, class HandFactory>
 class BotVsBotGame : public IGame
 {
 public:
