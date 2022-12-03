@@ -54,3 +54,23 @@ std::unique_ptr<Hand> HandFactory::CreateRandomHand()
         throw std::runtime_error("Could not create random hand");
     }
 }
+
+std::unique_ptr<Hand> HandFactory::CreateHandFromString(std::string handName)
+{
+    if (handName == "rock")
+    {
+        return CreateHand<Rock>();
+    }
+    else if (handName == "paper")
+    {
+        return CreateHand<Paper>();
+    }
+    else if (handName == "scissors")
+    {
+        return CreateHand<Scissors>();
+    }
+    else
+    {
+        throw std::runtime_error("Could not create hand from string");
+    }
+}

@@ -15,6 +15,7 @@ public:
     HandFactory() = default;
 
     std::unique_ptr<Hand> CreateRandomHand() override;
+    std::unique_ptr<Hand> CreateHandFromString(std::string handName) override;
 
     template <class HandType>
     std::unique_ptr<Hand> CreateHand()
