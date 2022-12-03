@@ -6,7 +6,7 @@
 
 int main(int, char **)
 {
-    auto handFactory = HandFactory();
+    auto handFactory = HandFactory{};
     auto rock = handFactory.CreateHand<Rock>();
     auto paper = handFactory.CreateHand<Paper>();
     auto scissors = handFactory.CreateHand<Scissors>();
